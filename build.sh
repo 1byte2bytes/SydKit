@@ -69,7 +69,7 @@ curl https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz > binuti
 tar xf binutils.tar.gz
 mkdir binutils-build
 cd binutils-build
-../binutils-$BINUTILS_VERSION/configure --with-sysroot --prefix=$INSTALL_DIR
+../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR
 make $MAKE_ARGS
 make install
 
@@ -80,7 +80,7 @@ curl https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz > gcc.
 tar xf gcc.tar.gz
 mkdir gcc-build
 cd gcc-build
-../gcc-$GCC_VERSION/configure --with-sysroot --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR --with-mpfr=$INSTALL_DIR --with-mpc=$INSTALL_DIR --with-isl=$INSTALL_DIR
+../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR --with-mpfr=$INSTALL_DIR --with-mpc=$INSTALL_DIR --with-isl=$INSTALL_DIR
 make $MAKE_ARGS
 make install
 
