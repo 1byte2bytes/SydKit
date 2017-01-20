@@ -1,0 +1,8 @@
+isl*
+gmp*
+mpfr*
+mpc*
+binutils*
+gcc*
+SydKit.framework/**
+.DS_Store
