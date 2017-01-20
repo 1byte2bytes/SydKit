@@ -25,7 +25,7 @@ tar xf isl.tar.gz
 mkdir isl-build
 cd isl-build
 ../isl-$ISL_VERSION/configure --prefix=/SydKit.framework
-make
+make $MAKE_ARGS
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
 #===========================
@@ -36,7 +36,7 @@ tar xf gmp.tar.bz2
 mkdir gmp-build
 cd gmp-build
 ../gmp-$GMP_VERSION/configure --prefix=/SydKit.framework
-make
+make $MAKE_ARGS
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
 #===========================
@@ -47,7 +47,7 @@ tar xf mfpr.tar.gz
 mkdir mpfr-build
 cd mpfr-build
 ../mpfr-$MPFR_VERSION/configure --prefix=/SydKit.framework --with-gmp=$PROJECT_ROOT/SydKit.framework
-make
+make $MAKE_ARGS
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
 #===========================
@@ -58,7 +58,7 @@ tar xf mpc.tar.gz
 mkdir mpc-build
 cd mpc-build
 ../mpc-$MPC_VERSION/configure --prefix=/SydKit.framework --with-gmp=$PROJECT_ROOT/SydKit.framework --with-mpfr=$PROJECT_ROOT/SydKit.framework
-make
+make $MAKE_ARGS
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
 #===========================
@@ -69,7 +69,7 @@ tar xf binutils.tar.gz
 mkdir binutils-build
 cd binutils-build
 ../binutils-$BINUTILS_VERSION/configure --with-sysroot --prefix=/SydKit.framework
-make
+make $MAKE_ARGS
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
 #===========================
@@ -80,6 +80,6 @@ tar xf gcc.tar.gz
 mkdir gcc-build
 cd gcc-build
 ../gcc-$GCC_VERSION/configure --with-sysroot --prefix=/SydKit.framework --with-gmp=$PROJECT_ROOT/SydKit.framework --with-mpfr=$PROJECT_ROOT/SydKit.framework --with-mpc=$PROJECT_ROOT/SydKit.framework --with-isl=$PROJECT_ROOT/SydKit.framework
-make
+make $MAKE_ARGS
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
