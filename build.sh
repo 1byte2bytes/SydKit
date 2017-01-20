@@ -68,7 +68,7 @@ curl https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz > binuti
 tar xf binutils.tar.gz
 mkdir binutils-build
 cd binutils-build
-../binutils-$BINUTILS_VERSION/configure --prefix=/SydKit.framework
+../binutils-$BINUTILS_VERSION/configure --with-sysroot --prefix=/SydKit.framework
 make
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
@@ -79,7 +79,7 @@ curl https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz > gcc.
 tar xf gcc.tar.gz
 mkdir gcc-build
 cd gcc-build
-../gcc-$GCC_VERSION/configure --prefix=/SydKit.framework --with-gmp=$PROJECT_ROOT/SydKit.framework --with-mpfr=$PROJECT_ROOT/SydKit.framework --with-mpc=$PROJECT_ROOT/SydKit.framework --with-isl=$PROJECT_ROOT/SydKit.framework
+../gcc-$GCC_VERSION/configure --with-sysroot --prefix=/SydKit.framework --with-gmp=$PROJECT_ROOT/SydKit.framework --with-mpfr=$PROJECT_ROOT/SydKit.framework --with-mpc=$PROJECT_ROOT/SydKit.framework --with-isl=$PROJECT_ROOT/SydKit.framework
 make
 make DESTDIR=$PROJECT_ROOT/SydKit.framework install
 
