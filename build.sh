@@ -80,7 +80,9 @@ curl https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz > gcc.
 tar xf gcc.tar.gz
 mkdir gcc-build
 cd gcc-build
-../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR --with-mpfr=$INSTALL_DIR --with-mpc=$INSTALL_DIR --with-isl=$INSTALL_DIR
+../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR \
+    --with-mpfr=$INSTALL_DIR --with-mpc=$INSTALL_DIR --with-isl=$INSTALL_DIR \
+    --enable-languages=c,c++,fortran --enable-checking=release
 make $MAKE_ARGS
 make install
 
