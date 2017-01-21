@@ -76,6 +76,6 @@ mkdir gcc-build
 cd gcc-build
 ../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
     --enable-languages=c,c++ --with-build-config=bootstrap-debug
-make $MAKE_ARGS
+make bootstrap $MAKE_ARGS
 make install
 
