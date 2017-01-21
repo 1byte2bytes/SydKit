@@ -1,6 +1,5 @@
 export GETTEXT_VERSION=0.19.8.1
 export LIBICONV_VERSION=1.14
-export ZLIB_VERSION=1.2.11
 export BINUTILS_VERSION=2.27
 export ISL_VERSION=0.18
 export GMP_VERSION=6.1.2
@@ -24,7 +23,6 @@ rm -rf gcc*
 rm -rf cloog*
 rm -rf gettext*
 rm -rf libiconv*
-rm -rf zlib*
 
 set -e
 
@@ -41,19 +39,12 @@ curl ftp://ftp.gnu.org/gnu/libiconv/libiconv-$LIBICONV_VERSION.tar.gz > libiconv
 tar xf libiconv.tar.gz
 mv libiconv-$LIBICONV_VERSION libiconv
 #===========================
-#ZLIB
-#===========================
-curl http://www.zlib.net/zlib-$ZLIB_VERSION.tar.gz > zlib.tar.gz
-tar xf zlib.tar.gz
-mv zlib-$ZLIB_VERSION zlib
-#===========================
 #BINUTILS
 #===========================
 curl https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz > binutils.tar.gz
 tar xf binutils.tar.gz
 mv gettext binutils-$BINUTILS_VERSION
 mv libiconv binutils-$BINUTILS_VERSION
-mv zlib binutils-$BINUTILS_VERSION
 mkdir binutils-build
 cd binutils-build
 ../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR --program-prefix=syd
