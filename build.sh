@@ -28,6 +28,10 @@ rm -rf cloog*
 rm -rf gettext*
 rm -rf libiconv*
 rm -rf cmake*
+rm -rf zlib*
+rm -rf llvm*
+rm -rf *.tar.gz
+rm -rf *.tar.xz
 
 set -e
 export PATH=$INSTALL_DIR/bin:$PATH
@@ -65,8 +69,8 @@ mv clang llvm/tools
 mv extra llvm/tools/clang/tools
 mv compiler-rt llvm/projects
 mv libcxx llvm/projects
-mkdir build-llvm
-cd build-llvm
+mkdir llvm-build
+cd llvm-build
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
 make $MAKE_ARGS
 make install
