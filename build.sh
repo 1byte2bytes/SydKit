@@ -8,6 +8,8 @@ export MPFR_VERSION=3.1.5
 export MPC_VERSION=1.0.3
 export GCC_VERSION=6.3.0
 
+export LLVM_VERSION=3.9.1
+
 export PROJECT_ROOT=$PWD
 export INSTALL_DIR=$HOME/SydKit.framework
 
@@ -25,6 +27,36 @@ rm -rf gettext*
 rm -rf libiconv*
 
 set -e
+export PATH=$INSTALL_DIR/bin:$PATH
+
+#===========================
+#LLVM
+#===========================
+
+curl http://releases.llvm.org/3.9.1/llvm-$LLVM_VERSION.src.tar.xz > llvm.tar.xz
+curl http://releases.llvm.org/3.9.1/cfe-$LLVM_VERSION.src.tar.xz > cfe.tar.xz
+curl http://releases.llvm.org/3.9.1/clang-tools-extra-$LLVM_VERSION.src.tar.xz > clang-tools-extra.tar.xz
+curl http://releases.llvm.org/3.9.1/compiler-rt-$LLVM_VERSION.src.tar.xz > compiler-rt.tar.xz
+curl http://releases.llvm.org/3.9.1/libcxx-$LLVM_VERSION.src.tar.xz > libcxx.tar.xz
+tar xf llvm.tar.xz
+tar xf cfe.tar.xz
+tar xf clang-tools-extra.tar.xz
+tar xf compiler-rt.tar.xz
+tar xf libcxx.tar.xz
+mv llvm-$LLVM_VERSION.src llvm
+mv cfe-$LLVM_VERSION.src clang
+mv clang-tools-extra-$LLVM_VERSION.src extra
+mv compiler-rt-$LLVM_VERSION.src compiler-rt
+mv libcxx-$LLVM_VERSION.src libcxx
+mv clang llvm/tools
+mv extra llvm/tools/clang/tools
+mv compiler-rt llvm/projects
+mv libcxx llvm/projects
+mkdir build-llvm
+cd build-llvm
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=prefix=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
+make
+make install
 
 #===========================
 #GETTEXT
@@ -47,7 +79,7 @@ mv gettext binutils-$BINUTILS_VERSION
 mv libiconv binutils-$BINUTILS_VERSION
 mkdir binutils-build
 cd binutils-build
-../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR --program-prefix=syd
+../binutils-$BINUTILS_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --with-sysroot --disable-nls --disable-werror
 make $MAKE_ARGS
 make install
 
@@ -86,7 +118,6 @@ mv mpc-$MPC_VERSION mpc
 #===========================
 #GCC
 #===========================
-export PATH=$INSTALL_DIR/bin:$PATH
 curl https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz > gcc.tar.gz
 tar xf gcc.tar.gz
 mv gmp gcc-$GCC_VERSION
@@ -96,11 +127,9 @@ mv mpfr gcc-$GCC_VERSION
 mv mpc gcc-$GCC_VERSION
 mkdir gcc-build
 cd gcc-build
-../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
-    --enable-languages=c,c++ --with-build-config=bootstrap-debug \
-    --disable-multilib --with-system-zlib --disable-nls \
-    --enable-stage1-checking --enable-lto --enable-libstdcxx-time \
-    --program-prefix=syd
-make $MAKE_ARGS
-make install
+../gcc-$GCC_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --disable-nls --enable-languages=c,c++ --without-headers
+make all-gcc
+make all-target-libgcc
+make install-gcc
+make install-target-libgcc
 
