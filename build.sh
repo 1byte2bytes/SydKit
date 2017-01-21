@@ -25,61 +25,31 @@ rm -rf cloog*
 #===========================
 curl https://ftp.gnu.org/gnu/gmp/gmp-$GMP_VERSION.tar.bz2 > gmp.tar.bz2
 tar xf gmp.tar.bz2
-mkdir gmp-build
-cd gmp-build
-../gmp-$GMP_VERSION/configure --prefix=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-cd ..
+mv gmp-$GMP_VERSION gmp
 #===========================
 #CLOOG
 #===========================
 curl http://www.bastoul.net/cloog/pages/download/cloog-$CLOOG_VERSION.tar.gz > cloog.tar.gz
 tar xf cloog.tar.gz
-mkdir cloog-build
-cd cloog-build
-../cloog-$CLOOG_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
-make
-make install
-
-cd ..
+mv cloog-$CLOOG_VERSION cloog
 #===========================
 #ISL
 #===========================
 curl http://isl.gforge.inria.fr/isl-$ISL_VERSION.tar.gz > isl.tar.gz
 tar xf isl.tar.gz
-mkdir isl-build
-cd isl-build
-../isl-$ISL_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-cd ..
+mv isl-$ISL_VERSION isl
 #===========================
 #MPFR
 #===========================
 curl https://ftp.gnu.org/gnu/mpfr/mpfr-$MPFR_VERSION.tar.gz > mpfr.tar.gz
 tar xf mpfr.tar.gz
-mkdir mpfr-build
-cd mpfr-build
-../mpfr-$MPFR_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-cd ..
+mv mpfr-$MPFR_VERSION mpfr
 #===========================
 #MPC
 #===========================
 curl https://ftp.gnu.org/gnu/mpc/mpc-$MPC_VERSION.tar.gz > mpc.tar.gz
 tar xf mpc.tar.gz
-mkdir mpc-build
-cd mpc-build
-../mpc-$MPC_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR --with-mpfr=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-cd ..
+mv mpc-$MPC_VERSION mpc
 #===========================
 #BINUTILS
 #===========================
@@ -97,10 +67,14 @@ cd ..
 #===========================
 curl https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz > gcc.tar.gz
 tar xf gcc.tar.gz
+mv gmp gcc-$GCC_VERSION
+mv cloog gcc-$GCC_VERSION
+mv isl gcc-$GCC_VERSION
+mv mpfr gcc-$GCC_VERSION
+mv mpc gcc-$GCC_VERSION
 mkdir gcc-build
 cd gcc-build
-../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR \
-    --with-mpfr=$INSTALL_DIR --with-mpc=$INSTALL_DIR --with-isl=$INSTALL_DIR \
+../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
     --enable-languages=c,c++,fortran --enable-checking=release
 make $MAKE_ARGS
 make install
