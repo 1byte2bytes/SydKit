@@ -67,7 +67,7 @@ mv compiler-rt llvm/projects
 mv libcxx llvm/projects
 mkdir build-llvm
 cd build-llvm
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=prefix=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
 make $MAKE_ARGS
 make install
 
