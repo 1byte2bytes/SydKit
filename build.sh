@@ -65,6 +65,7 @@ cd ..
 #===========================
 #GCC
 #===========================
+export PATH=$INSTALL_DIR/bin:$PATH
 curl https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz > gcc.tar.gz
 tar xf gcc.tar.gz
 mv gmp gcc-$GCC_VERSION
@@ -76,7 +77,8 @@ mkdir gcc-build
 cd gcc-build
 ../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
     --enable-languages=c,c++ --with-build-config=bootstrap-debug \
-    --disable-multilib
+    --disable-multilib --with-system-zlib --disable-nls \
+    --enable-stage1-checking --enable-lto --enable-libstdcxx-time
 make $MAKE_ARGS
 make install
 
