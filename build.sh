@@ -158,4 +158,5 @@ make DESTDIR=$DEST_DIR install-target-libgcc
 #===========================
 #CREATE PACKAGE
 #===========================
-pkgbuild --root $INSTALL_DIR --component-plist macOS_package.plist SydKit.pkg
+cd $DEST_DIR
+zip -r opt
