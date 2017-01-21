@@ -27,6 +27,7 @@ rm -rf gcc*
 rm -rf cloog*
 rm -rf gettext*
 rm -rf libiconv*
+rm -rf cmake*
 
 set -e
 export PATH=$INSTALL_DIR/bin:$PATH
@@ -36,8 +37,8 @@ export PATH=$INSTALL_DIR/bin:$PATH
 #===========================
 curl https://cmake.org/files/v$CMAKE_FOLDER/cmake-$CMAKE_VERSION.tar.gz > cmake.tar.gz
 tar xf cmake.tar.gz
-mkdir build-cmake
-cd build-cmake
+mkdir cmake-build
+cd cmake-build
 ../cmake-$CMAKE_VERSION/configure --prefix=$INSTALL_DIR
 make $MAKE_ARGS
 make install
