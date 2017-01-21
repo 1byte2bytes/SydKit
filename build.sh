@@ -8,6 +8,8 @@ export MPFR_VERSION=3.1.5
 export MPC_VERSION=1.0.3
 export GCC_VERSION=6.3.0
 
+export CMAKE_FOLDER=3.7
+export CMAKE_VERSION=cmake-3.7.2
 export LLVM_VERSION=3.9.1
 
 export PROJECT_ROOT=$PWD
@@ -30,9 +32,17 @@ set -e
 export PATH=$INSTALL_DIR/bin:$PATH
 
 #===========================
+#CMAKE
+#===========================
+curl https://cmake.org/files/v$CMAKE_FOLDER/cmake-$CMAKE_VERSION.tar.gz > cmake.tar.gz
+tar xf cmake.tar.gz
+./configure --prefix=$INSTALL_DIR
+make $MAKE_ARGS
+make install
+
+#===========================
 #LLVM
 #===========================
-
 curl http://releases.llvm.org/3.9.1/llvm-$LLVM_VERSION.src.tar.xz > llvm.tar.xz
 curl http://releases.llvm.org/3.9.1/cfe-$LLVM_VERSION.src.tar.xz > cfe.tar.xz
 curl http://releases.llvm.org/3.9.1/clang-tools-extra-$LLVM_VERSION.src.tar.xz > clang-tools-extra.tar.xz
