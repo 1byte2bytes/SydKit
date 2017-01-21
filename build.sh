@@ -155,3 +155,7 @@ make all-target-libgcc $MAKE_ARGS
 make DESTDIR=$DEST_DIR install-gcc
 make DESTDIR=$DEST_DIR install-target-libgcc
 
+#===========================
+#CREATE PACKAGE
+#===========================
+pkgbuild --analyze --root $DEST_DIR macOS_package.plist
