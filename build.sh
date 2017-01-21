@@ -47,6 +47,7 @@ cd cmake-build
 make $MAKE_ARGS
 make install
 
+cd ..
 #===========================
 #LLVM
 #===========================
