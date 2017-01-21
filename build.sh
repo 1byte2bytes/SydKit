@@ -26,6 +26,8 @@ rm -rf gettext*
 rm -rf libiconv*
 rm -rf zlib*
 
+set -e
+
 #===========================
 #GETTEXT
 #===========================
