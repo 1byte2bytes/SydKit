@@ -19,17 +19,6 @@ rm -rf binutils*
 rm -rf gcc*
 
 #===========================
-#ISL
-#===========================
-curl http://isl.gforge.inria.fr/isl-$ISL_VERSION.tar.gz > isl.tar.gz
-tar xf isl.tar.gz
-mkdir isl-build
-cd isl-build
-../isl-$ISL_VERSION/configure --prefix=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-#===========================
 #GMP
 #===========================
 curl https://ftp.gnu.org/gnu/gmp/gmp-$GMP_VERSION.tar.bz2 > gmp.tar.bz2
@@ -37,6 +26,17 @@ tar xf gmp.tar.bz2
 mkdir gmp-build
 cd gmp-build
 ../gmp-$GMP_VERSION/configure --prefix=$INSTALL_DIR
+make $MAKE_ARGS
+make install
+
+#===========================
+#ISL
+#===========================
+curl http://isl.gforge.inria.fr/isl-$ISL_VERSION.tar.gz > isl.tar.gz
+tar xf isl.tar.gz
+mkdir isl-build
+cd isl-build
+../isl-$ISL_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
 make $MAKE_ARGS
 make install
 
