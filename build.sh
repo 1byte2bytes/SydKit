@@ -1,5 +1,6 @@
 export ISL_VERSION=0.18
 export GMP_VERSION=6.1.2
+export CLOOG_VERSION=0.18.4
 export MPFR_VERSION=3.1.5
 export MPC_VERSION=1.0.3
 export BINUTILS_VERSION=2.27
@@ -17,6 +18,7 @@ rm -rf mpfr*
 rm -rf mpc*
 rm -rf binutils*
 rm -rf gcc*
+rm -rf cloog*
 
 #===========================
 #GMP
@@ -29,6 +31,17 @@ cd gmp-build
 make $MAKE_ARGS
 make install
 
+cd ..
+#===========================
+#CLOOG
+#===========================
+curl http://www.bastoul.net/cloog/pages/download/count.php3?url=./cloog-$CLOOG_VERSION.tar.gz > cloog.tar.gz
+tar xf cloog.tar.gz
+mkdir cloog-build
+cd cloog-build
+../cloog-$CLOOG_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
+
+cd ..
 #===========================
 #ISL
 #===========================
@@ -40,6 +53,7 @@ cd isl-build
 make $MAKE_ARGS
 make install
 
+cd ..
 #===========================
 #MPFR
 #===========================
@@ -51,6 +65,7 @@ cd mpfr-build
 make $MAKE_ARGS
 make install
 
+cd ..
 #===========================
 #MPC
 #===========================
@@ -62,6 +77,7 @@ cd mpc-build
 make $MAKE_ARGS
 make install
 
+cd ..
 #===========================
 #BINUTILS
 #===========================
@@ -73,6 +89,7 @@ cd binutils-build
 make $MAKE_ARGS
 make install
 
+cd ..
 #===========================
 #GCC
 #===========================
