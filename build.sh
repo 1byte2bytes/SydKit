@@ -13,7 +13,10 @@ export CMAKE_VERSION=3.7.2
 export LLVM_VERSION=3.9.1
 
 export PROJECT_ROOT=$PWD
-export INSTALL_DIR=$HOME/SydKit.framework
+#This is where the final product is going to be installed
+export INSTALL_DIR=/opt/SydKit
+#The temporary place to store the toolchains, useful for packaging
+export DEST_DIR=$HOME/SydKit
 
 #===========================
 #CLEANUP
@@ -45,7 +48,7 @@ mkdir cmake-build
 cd cmake-build
 ../cmake-$CMAKE_VERSION/configure --prefix=$INSTALL_DIR
 make $MAKE_ARGS
-make install
+make DESTDIR=$DEST_DIR install
 
 cd ..
 #===========================
@@ -74,7 +77,7 @@ mkdir llvm-build
 cd llvm-build
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
 make $MAKE_ARGS
-make install
+make DESTDIR=$DEST_DIR install
 
 cd ..
 #===========================
@@ -100,7 +103,7 @@ mkdir binutils-build
 cd binutils-build
 ../binutils-$BINUTILS_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --with-sysroot --disable-nls --disable-werror
 make $MAKE_ARGS
-make install
+make DESTDIR=$DEST_DIR install
 
 cd ..
 
@@ -149,6 +152,6 @@ cd gcc-build
 ../gcc-$GCC_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --disable-nls --enable-languages=c,c++ --without-headers
 make all-gcc $MAKE_ARGS
 make all-target-libgcc $MAKE_ARGS
-make install-gcc
-make install-target-libgcc
+make DESTDIR=$DEST_DIR install-gcc
+make DESTDIR=$DEST_DIR install-target-libgcc
 
