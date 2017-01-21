@@ -37,7 +37,7 @@ rm -rf *.tar.gz
 rm -rf *.tar.xz
 
 set -e
-export PATH=$INSTALL_DIR/bin:$PATH
+export PATH=$DEST_DIR/bin:$PATH
 
 #===========================
 #CMAKE
