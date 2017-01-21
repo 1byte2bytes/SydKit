@@ -56,7 +56,7 @@ mv libiconv binutils-$BINUTILS_VERSION
 mv zlib binutils-$BINUTILS_VERSION
 mkdir binutils-build
 cd binutils-build
-../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR
+../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR --program-prefix=syd
 make $MAKE_ARGS
 make install
 
@@ -108,7 +108,8 @@ cd gcc-build
 ../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
     --enable-languages=c,c++ --with-build-config=bootstrap-debug \
     --disable-multilib --with-system-zlib --disable-nls \
-    --enable-stage1-checking --enable-lto --enable-libstdcxx-time
+    --enable-stage1-checking --enable-lto --enable-libstdcxx-time \
+    --program-prefix=syd
 make $MAKE_ARGS
 make install
 
