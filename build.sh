@@ -35,7 +35,7 @@ cd ..
 #===========================
 #CLOOG
 #===========================
-curl http://www.bastoul.net/cloog/pages/download/count.php3?url=./cloog-$CLOOG_VERSION.tar.gz > cloog.tar.gz
+curl http://www.bastoul.net/cloog/pages/download/cloog-$CLOOG_VERSION.tar.gz > cloog.tar.gz
 tar xf cloog.tar.gz
 mkdir cloog-build
 cd cloog-build
@@ -58,7 +58,7 @@ cd ..
 #MPFR
 #===========================
 curl https://ftp.gnu.org/gnu/mpfr/mpfr-$MPFR_VERSION.tar.gz > mpfr.tar.gz
-tar xf mfpr.tar.gz
+tar xf mpfr.tar.gz
 mkdir mpfr-build
 cd mpfr-build
 ../mpfr-$MPFR_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
