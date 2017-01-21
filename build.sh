@@ -1,9 +1,12 @@
+export GETTEXT_VERSION=0.19.8.1
+export LIBICONV_VERSION=1.14
+export ZLIB_VERSION=1.2.11
+export BINUTILS_VERSION=2.27
 export ISL_VERSION=0.18
 export GMP_VERSION=6.1.2
 export CLOOG_VERSION=0.18.4
 export MPFR_VERSION=3.1.5
 export MPC_VERSION=1.0.3
-export BINUTILS_VERSION=2.27
 export GCC_VERSION=6.2.0
 
 export PROJECT_ROOT=$PWD
@@ -19,6 +22,43 @@ rm -rf mpc*
 rm -rf binutils*
 rm -rf gcc*
 rm -rf cloog*
+rm -rf gettext*
+rm -rf libiconv*
+rm -rf zlib*
+
+#===========================
+#GETTEXT
+#===========================
+curl ftp://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VERSION.tar.gz > gettext.tar.gz
+tar xf gettext.tar.gz
+mv gettext-$GETTEXT_VERSION gettext
+#===========================
+#LIBICONV
+#===========================
+curl ftp://ftp.gnu.org/gnu/libiconv/libiconv-$LIBICONV_VERSION.tar.gz > libiconv.tar.gz
+tar xf libiconv.tar.gz
+mv libiconv-$LIBICONV_VERSION libiconv
+#===========================
+#ZLIB
+#===========================
+curl http://www.zlib.net/zlib-$ZLIB_VERSION.tar.gz > zlib.tar.gz
+tar xf zlib.tar.gz
+mv zlib-$ZLIB_VERSION zlib
+#===========================
+#BINUTILS
+#===========================
+curl https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz > binutils.tar.gz
+tar xf binutils.tar.gz
+mv gettext binutils-$BINUTILS_VERSION
+mv libiconv binutils-$BINUTILS_VERSION
+mv zlib binutils-$BINUTILS_VERSION
+mkdir binutils-build
+cd binutils-build
+../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR
+make $MAKE_ARGS
+make install
+
+cd ..
 
 #===========================
 #GMP
@@ -50,18 +90,6 @@ mv mpfr-$MPFR_VERSION mpfr
 curl https://ftp.gnu.org/gnu/mpc/mpc-$MPC_VERSION.tar.gz > mpc.tar.gz
 tar xf mpc.tar.gz
 mv mpc-$MPC_VERSION mpc
-#===========================
-#BINUTILS
-#===========================
-curl https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_VERSION.tar.gz > binutils.tar.gz
-tar xf binutils.tar.gz
-mkdir binutils-build
-cd binutils-build
-../binutils-$BINUTILS_VERSION/configure --prefix=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-cd ..
 #===========================
 #GCC
 #===========================
