@@ -6,7 +6,7 @@ export GMP_VERSION=6.1.2
 export CLOOG_VERSION=0.18.4
 export MPFR_VERSION=3.1.5
 export MPC_VERSION=1.0.3
-export GCC_VERSION=6.2.0
+export GCC_VERSION=6.3.0
 
 export PROJECT_ROOT=$PWD
 export INSTALL_DIR=$HOME/SydKit.framework
