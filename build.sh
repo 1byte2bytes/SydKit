@@ -75,7 +75,8 @@ mv mpc gcc-$GCC_VERSION
 mkdir gcc-build
 cd gcc-build
 ../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
-    --enable-languages=c,c++ --with-build-config=bootstrap-debug
+    --enable-languages=c,c++ --with-build-config=bootstrap-debug \
+    --disable-nls --with-system-zlib --disable-multilib
 make bootstrap $MAKE_ARGS
 make install
 
