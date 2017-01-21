@@ -9,7 +9,7 @@ export MPC_VERSION=1.0.3
 export GCC_VERSION=6.3.0
 
 export CMAKE_FOLDER=3.7
-export CMAKE_VERSION=cmake-3.7.2
+export CMAKE_VERSION=3.7.2
 export LLVM_VERSION=3.9.1
 
 export PROJECT_ROOT=$PWD
