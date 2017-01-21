@@ -55,7 +55,7 @@ mv libcxx llvm/projects
 mkdir build-llvm
 cd build-llvm
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=prefix=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
-make
+make $MAKE_ARGS
 make install
 
 #===========================
@@ -128,8 +128,8 @@ mv mpc gcc-$GCC_VERSION
 mkdir gcc-build
 cd gcc-build
 ../gcc-$GCC_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --disable-nls --enable-languages=c,c++ --without-headers
-make all-gcc
-make all-target-libgcc
+make all-gcc $MAKE_ARGS
+make all-target-libgcc $MAKE_ARGS
 make install-gcc
 make install-target-libgcc
 
