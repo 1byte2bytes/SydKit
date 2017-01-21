@@ -40,6 +40,8 @@ tar xf cloog.tar.gz
 mkdir cloog-build
 cd cloog-build
 ../cloog-$CLOOG_VERSION/configure --prefix=$INSTALL_DIR --with-gmp=$INSTALL_DIR
+make
+make install
 
 cd ..
 #===========================
