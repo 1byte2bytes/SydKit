@@ -76,7 +76,7 @@ mkdir gcc-build
 cd gcc-build
 ../gcc-$GCC_VERSION/configure --prefix=$INSTALL_DIR \
     --enable-languages=c,c++ --with-build-config=bootstrap-debug \
-    --disable-nls --with-system-zlib --disable-multilib
+    --disable-multilib
 make $MAKE_ARGS
 make install
 
