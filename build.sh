@@ -79,7 +79,7 @@ cd ..
 #make $MAKE_ARGS
 #make DESTDIR=$DEST_DIR install
 
-cd ..
+#cd ..
 #===========================
 #GETTEXT
 #===========================
