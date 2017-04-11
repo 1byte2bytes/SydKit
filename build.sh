@@ -156,6 +156,16 @@ make DESTDIR=$DEST_DIR install-gcc
 make DESTDIR=$DEST_DIR install-target-libgcc
 
 #===========================
+#QEMU M68K
+#===========================
+git clone --depth=1 -b m68k-dev https://github.com/vivier/qemu-m68k.git
+cd qemu-m68k
+git submodule update --recursive --init
+./configure --prefix=$INSTALL_DIR/m68k
+make
+make install
+
+#===========================
 #CREATE PACKAGE
 #===========================
 cd $DEST_DIR
