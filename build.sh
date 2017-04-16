@@ -54,32 +54,32 @@ cd ..
 #===========================
 #LLVM
 #===========================
-#curl http://releases.llvm.org/3.9.1/llvm-$LLVM_VERSION.src.tar.xz > llvm.tar.xz
-#curl http://releases.llvm.org/3.9.1/cfe-$LLVM_VERSION.src.tar.xz > cfe.tar.xz
-#curl http://releases.llvm.org/3.9.1/clang-tools-extra-$LLVM_VERSION.src.tar.xz > clang-tools-extra.tar.xz
-#curl http://releases.llvm.org/3.9.1/compiler-rt-$LLVM_VERSION.src.tar.xz > compiler-rt.tar.xz
-#curl http://releases.llvm.org/3.9.1/libcxx-$LLVM_VERSION.src.tar.xz > libcxx.tar.xz
-#tar xf llvm.tar.xz
-#tar xf cfe.tar.xz
-#tar xf clang-tools-extra.tar.xz
-#tar xf compiler-rt.tar.xz
-#tar xf libcxx.tar.xz
-#mv llvm-$LLVM_VERSION.src llvm
-#mv cfe-$LLVM_VERSION.src clang
-#mv clang-tools-extra-$LLVM_VERSION.src extra
-#mv compiler-rt-$LLVM_VERSION.src compiler-rt
-#mv libcxx-$LLVM_VERSION.src libcxx
-#mv clang llvm/tools
-#mv extra llvm/tools/clang/tools
-#mv compiler-rt llvm/projects
-#mv libcxx llvm/projects
-#mkdir llvm-build
-#cd llvm-build
-#cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
-#make $MAKE_ARGS
-#make DESTDIR=$DEST_DIR install
+curl http://releases.llvm.org/3.9.1/llvm-$LLVM_VERSION.src.tar.xz > llvm.tar.xz
+curl http://releases.llvm.org/3.9.1/cfe-$LLVM_VERSION.src.tar.xz > cfe.tar.xz
+curl http://releases.llvm.org/3.9.1/clang-tools-extra-$LLVM_VERSION.src.tar.xz > clang-tools-extra.tar.xz
+curl http://releases.llvm.org/3.9.1/compiler-rt-$LLVM_VERSION.src.tar.xz > compiler-rt.tar.xz
+curl http://releases.llvm.org/3.9.1/libcxx-$LLVM_VERSION.src.tar.xz > libcxx.tar.xz
+tar xf llvm.tar.xz
+tar xf cfe.tar.xz
+tar xf clang-tools-extra.tar.xz
+tar xf compiler-rt.tar.xz
+tar xf libcxx.tar.xz
+mv llvm-$LLVM_VERSION.src llvm
+mv cfe-$LLVM_VERSION.src clang
+mv clang-tools-extra-$LLVM_VERSION.src extra
+mv compiler-rt-$LLVM_VERSION.src compiler-rt
+mv libcxx-$LLVM_VERSION.src libcxx
+mv clang llvm/tools
+mv extra llvm/tools/clang/tools
+mv compiler-rt llvm/projects
+mv libcxx llvm/projects
+mkdir llvm-build
+cd llvm-build
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
+make $MAKE_ARGS
+make DESTDIR=$DEST_DIR install
 
-#cd ..
+cd ../..
 #===========================
 #GETTEXT
 #===========================
