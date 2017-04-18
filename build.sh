@@ -14,7 +14,7 @@ export LLVM_VERSION=3.9.1
 
 export PROJECT_ROOT=$PWD
 #This is where the final product is going to be installed
-export INSTALL_DIR=/opt/SydKit
+export INSTALL_DIR=$HOME/SydKit
 #The temporary place to store the toolchains, useful for packaging
 export DEST_DIR=$HOME/SydKit
 
@@ -48,7 +48,7 @@ mkdir cmake-build
 cd cmake-build
 ../cmake-$CMAKE_VERSION/configure --prefix=$INSTALL_DIR
 make $MAKE_ARGS
-make DESTDIR=$DEST_DIR install
+make install
 
 cd ..
 #===========================
@@ -103,7 +103,7 @@ mkdir binutils-build
 cd binutils-build
 ../binutils-$BINUTILS_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --with-sysroot --disable-nls --disable-werror
 make $MAKE_ARGS
-make DESTDIR=$DEST_DIR install
+make install
 
 cd ..
 
@@ -152,8 +152,8 @@ cd gcc-build
 ../gcc-$GCC_VERSION/configure --target=i686-elf --prefix=$INSTALL_DIR --disable-nls --enable-languages=c,c++ --without-headers
 make all-gcc $MAKE_ARGS
 make all-target-libgcc $MAKE_ARGS
-make DESTDIR=$DEST_DIR install-gcc
-make DESTDIR=$DEST_DIR install-target-libgcc
+make install-gcc
+make install-target-libgcc
 
 #===========================
 #QEMU M68K
