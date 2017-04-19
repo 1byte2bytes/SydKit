@@ -83,13 +83,13 @@ cd ..
 #===========================
 #GETTEXT
 #===========================
-curl ftp://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VERSION.tar.gz > gettext.tar.gz
+curl https://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VERSION.tar.gz > gettext.tar.gz
 tar xf gettext.tar.gz
 mv gettext-$GETTEXT_VERSION gettext
 #===========================
 #LIBICONV
 #===========================
-curl ftp://ftp.gnu.org/gnu/libiconv/libiconv-$LIBICONV_VERSION.tar.gz > libiconv.tar.gz
+curl https://ftp.gnu.org/gnu/libiconv/libiconv-$LIBICONV_VERSION.tar.gz > libiconv.tar.gz
 tar xf libiconv.tar.gz
 mv libiconv-$LIBICONV_VERSION libiconv
 #===========================
