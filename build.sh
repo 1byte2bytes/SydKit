@@ -155,6 +155,8 @@ make all-target-libgcc $MAKE_ARGS
 make install-gcc
 make install-target-libgcc
 
+cd ..
+
 #===========================
 #QEMU M68K
 #===========================
@@ -164,6 +166,42 @@ make install-target-libgcc
 #./configure --prefix=$INSTALL_DIR/m68k
 #make
 #make install
+
+#===========================
+#genpass
+#===========================
+git clone --depth=1 https://github.com/Neal/genpass.git
+cd genpass
+make
+
+cd ..
+
+#===========================
+#kcache
+#===========================
+git clone --depth=1 https://github.com/iOSForensics/kcache.git
+cd kcache
+make
+
+cd ..
+
+#===========================
+#decompkernelcache
+#===========================
+git clone --depth=1 https://github.com/andyvand/decompkernelcache.git
+cd decompkernelcache
+make
+
+cd ..
+
+#===========================
+#vfdecrypt
+#===========================
+git clone --depth=1 https://github.com/Tomer1510/VFDecrypt.git
+cd vfdecrypt
+make
+
+cd ..
 
 #===========================
 #CREATE PACKAGE
