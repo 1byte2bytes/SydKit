@@ -40,18 +40,6 @@ set -e
 export PATH=$DEST_DIR/opt/SydKit/bin:$PATH
 
 #===========================
-#CMAKE
-#===========================
-curl https://cmake.org/files/v$CMAKE_FOLDER/cmake-$CMAKE_VERSION.tar.gz > cmake.tar.gz
-tar xf cmake.tar.gz
-mkdir cmake-build
-cd cmake-build
-CC=o64-clang ../cmake-$CMAKE_VERSION/configure --host=x86_64-apple-darwin15 --prefix=$INSTALL_DIR
-make $MAKE_ARGS
-make install
-
-cd ..
-#===========================
 #GETTEXT
 #===========================
 curl https://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VERSION.tar.gz > gettext.tar.gz
