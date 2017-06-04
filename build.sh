@@ -79,7 +79,7 @@ mkdir llvm-build
 cd llvm-build
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release ../llvm
 make $MAKE_ARGS
-make DESTDIR=$DEST_DIR install
+make install
 
 cd ../..
 #===========================
