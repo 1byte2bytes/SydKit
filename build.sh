@@ -18,6 +18,8 @@ export INSTALL_DIR=$HOME/SydKit
 #The temporary place to store the toolchains, useful for packaging
 export DEST_DIR=$HOME/SydKit
 
+export PATH=$DEST_DIR:$PATH
+
 #===========================
 #CLEANUP
 #===========================
