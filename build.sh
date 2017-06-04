@@ -81,7 +81,7 @@ cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD
 make $MAKE_ARGS
 make install
 
-cd ../..
+cd ..
 #===========================
 #GETTEXT
 #===========================
