@@ -52,7 +52,7 @@ cd cmake-build
 make $MAKE_ARGS
 make install
 
-cd ..
+cd $PROJECT_ROOT
 #===========================
 #LLVM
 #===========================
@@ -81,7 +81,8 @@ cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DCMAKE_BUILD
 make $MAKE_ARGS
 make install
 
-cd ..
+cd $PROJECT_ROOT
+
 #===========================
 #GETTEXT
 #===========================
@@ -107,7 +108,7 @@ cd binutils-build
 make $MAKE_ARGS
 make install
 
-cd ..
+cd $PROJECT_ROOT
 
 #===========================
 #GMP
@@ -157,7 +158,7 @@ make all-target-libgcc $MAKE_ARGS
 make install-gcc
 make install-target-libgcc
 
-cd ..
+cd $PROJECT_ROOT
 
 #===========================
 #QEMU M68K
